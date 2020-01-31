@@ -1,3 +1,4 @@
+0 - 浏览器方式映射POS代码
 @startuml
 Loop 事件触发/定时
 POS -> "APP Server": 请求最新界面元素脚本
