@@ -1,0 +1,58 @@
+@startuml
+Loop 事件触发/定时
+POS -> "APP Server": 请求最新界面元素脚本
+"APP Server" --> POS: 返回界面元素脚本
+POS -> "APP Server": 请求最新风格脚本
+"APP Server" --> POS: 返回界面风格脚本
+POS -> "APP Server": 请求业务逻辑程序
+"APP Server" --> POS: 返回业务逻辑程序
+end
+Loop 业务流程
+
+POS -> "TRADE Server": 请求业务执行
+activate "TRADE Server"
+"TRADE Server" --> POS: 业务执行结果
+deactivate "TRADE Server"
+end
+@enduml
+
+
+@startuml
+start
+if (入参检查合格?) then (yes)
+  :按指定格式组包;
+  :按指定算法加密;
+  if (按指定通讯协议发送/接收成功?) then (yes)
+    :按指定算法解密;
+    :按指定格式解包;
+    if (交易成功?) then (yes)
+      :更新出参;
+      :成功返回;
+    else (no)
+      :失败返回;
+    endif
+   else (no)
+    :失败返回;
+   endif
+else (no)
+ :失败返回;
+endif
+stop
+@enduml
+
+
+@startuml
+:用户: -> (View) : 按键输入
+(Start) .. (View)
+(View) --> (Control) : 进入具体业务
+(View) -> (View) : 菜单切换
+@enduml
+
+
+@startuml
+:用户: -> (View) : 按键输入
+(Start) .. (Control)
+(View) -> (Control) : 数据绑定
+(Control) -> (View) : 界面流程控制
+(Control) -> (Model) : 函数调用
+@enduml
