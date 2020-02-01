@@ -65,7 +65,9 @@ stop
 @enduml
 
 
-4 - 视图树
+视图树，不支持序号链接，使用硬解码
+http://www.plantuml.com/plantuml/png/NSx1Ji8m60VmEq-nymvD1BbpCk49F4lqwi6HS2qnmK548Pjnc147peG3wOmQO2p0oxJzshTGBEqSj_Rt__VhLtEQ5pVDLiCfsHPTPV1qByVJacrR9uWlNF6Txizbn5_VHVBhAWYns0shCFVfEkQ1zyTbf2xGMt3S_jUl88ands-BGUxxyoaIP0iReZ_eUgp_mSErLiLqzSaUtuofnRwcq4tXuUx0IYL-4IGflfPP84XSJ5Jxl7vMDs9L4VWpxYw1J63GqHjvVRe9sJ0mlI8pzrbCPcQfPSPwaGaLLn1p8pcASrPbzS_nQCr91w8stH7kftgw6S37jt8qE3ohNLrVjXhE3m00
+
 @startwbs
 * 主界面
 ** 1.消费
@@ -90,3 +92,4 @@ stop
 **** 1.管理密码修改
 **** 2.操作员权限设置
 @endwbs
+

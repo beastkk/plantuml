@@ -1,0 +1,76 @@
+http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/beastkk/plantuml/paper/papers/ooc.txt&fmt=png&idx=0
+
+
+0 - 对象大小及偏移:
+@startuml
+title
+| sizeof( Base1 )            | 8 |
+| offsetof( Base1, base1_1 ) | 0 |
+| offsetof( Base1, base1_2 ) | 4 |
+end title
+@enduml
+
+
+1 - 对象布局
+@startuml
+title
+| 对象布局 |
+| Base1_1 |
+| Base1_2 |
+end title
+@enduml
+
+
+2 - 没有虚函数
+@startuml
+title
+| sizeof( Base1 )            | 8 |
+| offsetof( Base1, base1_1 ) | 0 |
+| offsetof( Base1, base1_2 ) | 4 |
+end title
+@enduml
+
+
+3 - 拥有仅一个虚函数的类对象
+@startuml
+title
+| sizeof( Base1 )            | 12 |
+| offsetof( Base1, base1_1 ) | 4 |
+| offsetof( Base1, base1_2 ) | 8 |
+end title
+@enduml
+
+
+4 - 该类的对象大小为12个字节
+@startuml
+title
+| sizeof( Base1 )            | 12 |
+| offsetof( __vfptr )        | 0  |
+| offsetof( Base1, base1_1 ) | 4 |
+| offsetof( Base1, base1_2 ) | 8 |
+end title
+@enduml
+
+
+
+5 - 新对象布局
+@startuml
+title
+| 对象布局 |
+| const void**:__vfptr |
+| int:base1_1 |
+| int:base2_2 |
+end title
+@enduml
+
+
+
+6 - 拥有多个虚函数的类对象
+@startuml
+title
+| sizeof( Base1 )            | 12 |
+| offsetof( __vfptr )        | 0  |
+| offsetof( Base1, base1_1 ) | 4 |
+| offsetof( Base1, base1_2 ) | 8 |
+end title
+@enduml
