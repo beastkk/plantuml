@@ -1,7 +1,7 @@
 http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/beastkk/plantuml/paper/papers/ooc.txt&fmt=png&idx=0
 
 
-0 - 对象大小及偏移:
+0 - 对象大小及偏移
 @startuml
 title
 | sizeof( Base1 )            | 8 |

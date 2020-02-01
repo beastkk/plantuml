@@ -1,0 +1,195 @@
+http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/beastkk/plantuml/paper/papers/view.txt&fmt=png&idx=0
+
+
+
+View继承树，不支持序号链接，使用硬解码
+http://www.plantuml.com/plantuml/png/SoWkIImgAKygvj9I2CjCBNSloYyjuD92uK1vM1Zej4DgNWhGB000
+
+@startwbs
+* ViewGroup
+** ViewGroup
+*** View
+*** View
+*** View
+** View
+** View
+@endwbs
+
+
+0 - Android View类图
+@startuml
+class View
+class ImageView
+class ProgressBar
+class TextView
+class ViewGroup
+class AbsoluteLayout
+class LinearLayout
+class Button
+class EditText
+class TableLayout
+class TableRow
+View <|-- ImageView
+View <|-- ProgressBar
+View <|-- TextView
+View <|-- ViewGroup
+ViewGroup <|-- AbsoluteLayout
+ViewGroup <|-- LinearLayout
+TextView <|-- Button
+TextView <|-- EditText
+LinearLayout <|-- TableLayout
+LinearLayout <|-- TableRow
+@enduml
+
+
+1 - C View类图1
+@startuml
+interface View
+class ImageView
+class ProgressBar
+class TextView
+class Button
+class EditText
+View <|-- ImageView
+View <|-- ProgressBar
+View <|-- TextView
+View <|-- Button
+View <|-- EditText
+@enduml
+
+
+2 - C View类图2
+@startuml
+interface ViewGroup
+class AbsoluteLayout
+class LinearLayout
+class TableLayout
+class TableRow
+ViewGroup <|-- AbsoluteLayout
+ViewGroup <|-- LinearLayout
+ViewGroup <|-- TableLayout
+ViewGroup <|-- TableRow
+'TableLayout *- LinearLayout
+'View <|-- ViewGroup
+@enduml
+
+
+3 - 渲染流程图
+@startuml
+(*) --> "计算每个组件的大小" 
+--> "计算每个组件的位置"
+--> "显示每个组件" 
+-->(*)
+@enduml
+
+
+4 - measure流程
+@startuml
+start
+note right:measure();
+:根据布局特性取子View;
+while (子View遍历完成?) is (否)
+
+  while (子View有子View?) is (是)
+    :子View measure();
+    note right:递归
+  endwhile (否)
+
+:合并子View计算出组件大小;
+endwhile (是)
+
+:setMeasuredDimension();
+
+stop
+@enduml
+
+
+5 - onLayout流程
+@startuml
+start
+note right:onLayout();
+:取子View;
+while (子View遍历完成?) is (否)
+
+  while (子View有子View?) is (是)
+    :子View onLayout();
+    note right:递归
+  endwhile (否)
+
+:根据布局特性调用子View layout();
+endwhile (是)
+
+
+stop
+@enduml
+
+
+6 - draw流程
+@startuml
+start
+note right:draw();
+:drawBackground() 绘制背景;
+:onDraw() 绘制内容;
+
+:取子View;
+while (子View遍历完成?) is (否)
+
+  while (子View有子View?) is (是)
+    :子View draw();
+    note right:递归
+  endwhile (否)
+
+  :drawBackground() 绘制子View背景;
+  :onDraw() 绘制子View内容;
+  :onDrawScrollBars() 绘制子View装饰;
+endwhile (是)
+:onDrawScrollBars() 绘制装饰;
+
+stop
+@enduml
+
+
+7 - View接口
+@startuml
+interface View
+{
+// 外观()
+onMeasure(int, int);
+onLayout(boolean, int, int, int, int);
+onDraw(graphics);
+// 动态表现()
+onSizeChanged(int, int, int, int);
+onFocusChanged(boolean, int, Rect);
+
+}
+@enduml
+
+
+8 - 类图
+@startuml
+class ViewControl
+interface View
+ViewControl "1" *- "n" View
+class ImageView
+class ProgressBar
+class TextView
+class Button
+class EditText
+View <|-- ImageView
+View <|-- ProgressBar
+View <|-- TextView
+View <|-- Button
+View <|-- EditText
+interface ViewGroup
+class AbsoluteLayout
+class LinearLayout
+class TableLayout
+class TableRow
+ViewGroup <|-- AbsoluteLayout
+ViewGroup <|-- LinearLayout
+ViewGroup <|-- TableLayout
+ViewGroup <|-- TableRow
+'LinearLayout -* TableLayout
+View "1" -* "1" ViewGroup
+@enduml
+
