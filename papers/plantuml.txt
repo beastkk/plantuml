@@ -1,3 +1,6 @@
+http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/beastkk/plantuml/paper/papers/plantuml.txt&fmt=png&idx=0
+
+
 0 - 浏览器方式映射POS代码
 @startuml
 Loop 事件触发/定时
@@ -18,6 +21,7 @@ end
 @enduml
 
 
+1 - 典型的交易函数流程
 @startuml
 start
 if (入参检查合格?) then (yes)
@@ -42,6 +46,7 @@ stop
 @enduml
 
 
+2 - 菜单切换视图
 @startuml
 :用户: -> (View) : 按键输入
 (Start) .. (View)
@@ -50,6 +55,7 @@ stop
 @enduml
 
 
+3 - 人机交互视图
 @startuml
 :用户: -> (View) : 按键输入
 (Start) .. (Control)
@@ -57,3 +63,30 @@ stop
 (Control) -> (View) : 界面流程控制
 (Control) -> (Model) : 函数调用
 @enduml
+
+
+4 - 视图树
+@startwbs
+* 主界面
+** 1.消费
+** 2.查询
+*** 1.最近5笔交易
+*** 2.交易状态查询
+*** 3.退款状态查询
+** 3.退款
+** 4.设置
+*** 1.打印机设置
+**** 1.串口设置
+**** 2.波特率设置
+*** 2.通讯设置
+**** 1.默认通讯设置
+**** 2.WIFI设置
+** 5.用户管理
+*** 1.操作员设置
+**** 1.操作员列表
+**** 2.添加操作员
+**** 3.删除操作员
+*** 2.管理员设置
+**** 1.管理密码修改
+**** 2.操作员权限设置
+@endwbs
