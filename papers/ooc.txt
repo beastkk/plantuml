@@ -74,3 +74,25 @@ title
 | offsetof( Base1, base1_2 ) | 8 |
 end title
 @enduml
+
+7 - 定义了基类没有的虚函数的单继承的类对象布局
+@startuml
+title
+| sizeof( Derive1 )            | 20 |
+| offsetof( Derive1, derive1_1 ) | 12 |
+| offsetof( Derive1, derive1_2 ) | 16 |
+end title
+@enduml
+
+8 - 多继承且存在虚函数覆盖同时又存在自身定义的虚函数的类对象布局
+@startuml
+title
+| sizeof( Base1 )            | 12 |
+| sizeof( Base2 )            | 12 |
+| sizeof( Derive1 )            | 32 |
+| offsetof( Derive1, derive1_1 ) | 24 |
+| offsetof( Derive1, derive1_2 ) | 28 |
+end title
+@enduml
+
+
