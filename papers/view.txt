@@ -1,10 +1,7 @@
 http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/beastkk/plantuml/paper/papers/view.txt&fmt=png&idx=0
 
 
-
-View继承树，不支持序号链接，使用硬解码
-http://www.plantuml.com/plantuml/png/SoWkIImgAKygvj9I2CjCBNSloYyjuD92uK1vM1Zej4DgNWhGB000
-
+0 - View继承树
 @startwbs
 * ViewGroup
 ** ViewGroup
@@ -16,7 +13,7 @@ http://www.plantuml.com/plantuml/png/SoWkIImgAKygvj9I2CjCBNSloYyjuD92uK1vM1Zej4D
 @endwbs
 
 
-0 - Android View类图
+1 - Android View类图
 @startuml
 class View
 class ImageView
@@ -42,7 +39,7 @@ LinearLayout <|-- TableRow
 @enduml
 
 
-1 - C View类图1
+2 - C View类图1
 @startuml
 interface View
 class ImageView
@@ -58,7 +55,7 @@ View <|-- EditText
 @enduml
 
 
-2 - C View类图2
+3 - C View类图2
 @startuml
 interface ViewGroup
 class AbsoluteLayout
@@ -74,7 +71,7 @@ ViewGroup <|-- TableRow
 @enduml
 
 
-3 - 渲染流程图
+4 - 渲染流程图
 @startuml
 (*) --> "计算每个组件的大小" 
 --> "计算每个组件的位置"
@@ -83,7 +80,7 @@ ViewGroup <|-- TableRow
 @enduml
 
 
-4 - measure流程
+5 - measure流程
 @startuml
 start
 note right:measure();
@@ -104,7 +101,7 @@ stop
 @enduml
 
 
-5 - onLayout流程
+6 - onLayout流程
 @startuml
 start
 note right:onLayout();
@@ -119,12 +116,11 @@ while (子View遍历完成?) is (否)
 :根据布局特性调用子View layout();
 endwhile (是)
 
-
 stop
 @enduml
 
 
-6 - draw流程
+7 - draw流程
 @startuml
 start
 note right:draw();
@@ -149,7 +145,7 @@ stop
 @enduml
 
 
-7 - View接口
+8 - View接口
 @startuml
 interface View
 {
@@ -165,7 +161,7 @@ onFocusChanged(boolean, int, Rect);
 @enduml
 
 
-8 - 类图
+9 - 类图
 @startuml
 class ViewControl
 interface View
