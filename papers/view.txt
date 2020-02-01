@@ -161,7 +161,27 @@ onFocusChanged(boolean, int, Rect);
 @enduml
 
 
-9 - 类图
+9 - ViewGroup接口
+@startuml
+interface ViewGroup
+{
+// 外观()
+onMeasure(int, int);
+onLayout(boolean, int, int, int, int);
+onDraw(graphics);
+// 动态表现()
+onSizeChanged(int, int, int, int);
+onFocusChanged(boolean, int, Rect);
+// 子View管理()
+addView(View view);
+removeView(View view);
+getChildAt(int index);
+
+}
+@enduml
+
+
+10 - 类图
 @startuml
 class ViewControl
 interface View
